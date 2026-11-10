@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := first_blink
+BUILD_ARTIFACT_NAME := test_project
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-first_blink.elf \
+test_project.elf \
 
 MAP_FILES += \
-first_blink.map \
+test_project.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-first_blink.list \
+test_project.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: first_blink.elf secondary-outputs
+main-build: test_project.elf secondary-outputs
 
 # Tool invocations
-first_blink.elf first_blink.map: $(OBJS) $(USER_OBJS) C:\Users\yaros\OneDrive\Dokumenter\STM32\stm32fun\first_blink\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "first_blink.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\yaros\OneDrive\Dokumenter\STM32\stm32fun\first_blink\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="first_blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+test_project.elf test_project.map: $(OBJS) $(USER_OBJS) C:\STMicroelectronics\STM32\stm32testproject\test_project\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "test_project.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\STMicroelectronics\STM32\stm32testproject\test_project\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-first_blink.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "first_blink.list"
+test_project.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "test_project.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) default.size.stdout first_blink.elf first_blink.list first_blink.map
+	-$(RM) default.size.stdout test_project.elf test_project.list test_project.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

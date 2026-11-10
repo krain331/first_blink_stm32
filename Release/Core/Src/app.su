@@ -1,0 +1,7 @@
+../Core/Src/app.c:175:14:fmt_fixed	48	static
+../Core/Src/app.c:199:14:str_add	0	static
+../Core/Src/app.c:93:13:process_samples.constprop	72	static
+../Core/Src/app.c:124:6:HAL_ADC_ConvHalfCpltCallback	0	static
+../Core/Src/app.c:129:6:HAL_ADC_ConvCpltCallback	0	static
+../Core/Src/app.c:394:6:app_init	40	static
+../Core/Src/app.c:415:6:app_loop	160	static,ignoring_inline_asm

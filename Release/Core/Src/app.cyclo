@@ -1,0 +1,7 @@
+../Core/Src/app.c:175:14:fmt_fixed	9
+../Core/Src/app.c:199:14:str_add	2
+../Core/Src/app.c:93:13:process_samples.constprop	4
+../Core/Src/app.c:124:6:HAL_ADC_ConvHalfCpltCallback	2
+../Core/Src/app.c:129:6:HAL_ADC_ConvCpltCallback	2
+../Core/Src/app.c:394:6:app_init	8
+../Core/Src/app.c:415:6:app_loop	28
